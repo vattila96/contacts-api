@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  database:
+    image: postgres:13
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER: contactsapi
+      POSTGRES_PASSWORD: contactsapi
+      POSTGRES_DB: contactsapi
+    volumes:
+      - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 18025:8025
+      - 11025:1025
