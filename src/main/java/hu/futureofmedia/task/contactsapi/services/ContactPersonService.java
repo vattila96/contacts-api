@@ -99,4 +99,18 @@ public class ContactPersonService {
     public boolean isCompanyValid(long companyId) {
         return companyRepository.findAll().stream().map(Company::getId).anyMatch(x -> x == companyId);
     }
+
+    public Long updateContactPerson(long id, ContactPersonRequest contactPersonRequest) {
+        Optional<ContactPerson> contactPerson = contactPersonRepository.findById(id);
+
+        if (contactPerson.isPresent()) {
+            ContactPerson updatedContactPerson = contactPerson.get();
+            contactPersonMapper.updateContactPersonFromRequest(contactPersonRequest, updatedContactPerson);
+            contactPersonRepository.save(updatedContactPerson);
+
+            return updatedContactPerson.getId();
+        } else {
+            throw new ResourceNotFoundException(ContactPerson.class.getName(), id);
+        }
+    }
 }
