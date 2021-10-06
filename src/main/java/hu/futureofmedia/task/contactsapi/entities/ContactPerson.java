@@ -1,14 +1,16 @@
 package hu.futureofmedia.task.contactsapi.entities;
 
+import hu.futureofmedia.task.contactsapi.common.Status;
+import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.Optional;
 
 @Entity
+@Getter
 public class ContactPerson {
 
     @Id
@@ -43,6 +45,3 @@ public class ContactPerson {
     public Optional<String> getComment() { return Optional.ofNullable(comment); }
 }
 
-enum Status {
-    ACTIVE, DELETED
-}
