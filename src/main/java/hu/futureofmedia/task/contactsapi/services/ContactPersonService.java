@@ -31,4 +31,14 @@ public class ContactPersonService {
         return contactPerson.orElseThrow(
                 () -> new ResourceNotFoundException(ContactPerson.class.getName(), id));
     }
+
+    public void deleteContactPerson(long id){
+        Optional<ContactPerson> contactPerson = contactPersonRepository.findById(id);
+
+        if (contactPerson.isPresent()) {
+            contactPersonRepository.delete(contactPerson.get());
+        } else {
+            throw new ResourceNotFoundException(ContactPerson.class.getName(), id);
+        }
+    }
 }

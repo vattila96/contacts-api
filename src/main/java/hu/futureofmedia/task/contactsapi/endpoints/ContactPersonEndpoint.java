@@ -25,4 +25,11 @@ public class ContactPersonEndpoint {
     public ResponseEntity<ContactPerson> getContactPerson(@PathVariable Long id) {
         return ResponseEntity.ok().body(contactPersonService.getContactPerson(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteContactPerson(@PathVariable Long id) {
+        contactPersonService.deleteContactPerson(id);
+
+        return ResponseEntity.noContent().build();
+    }
 }
