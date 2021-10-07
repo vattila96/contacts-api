@@ -2,7 +2,6 @@ package hu.futureofmedia.task.contactsapi;
 
 import hu.futureofmedia.task.contactsapi.common.Status;
 import hu.futureofmedia.task.contactsapi.entities.ContactPerson;
-import hu.futureofmedia.task.contactsapi.mappers.ContactPersonMapper;
 import hu.futureofmedia.task.contactsapi.repositories.ContactPersonRepository;
 import hu.futureofmedia.task.contactsapi.services.ContactPersonService;
 import org.junit.jupiter.api.Assertions;

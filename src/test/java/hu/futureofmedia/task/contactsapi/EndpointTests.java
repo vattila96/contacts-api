@@ -1,7 +1,6 @@
 package hu.futureofmedia.task.contactsapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hu.futureofmedia.task.contactsapi.common.Status;
 import hu.futureofmedia.task.contactsapi.dtos.ContactPersonRequest;
 import hu.futureofmedia.task.contactsapi.endpoints.ContactPersonEndpoint;
 import hu.futureofmedia.task.contactsapi.entities.ContactPerson;
@@ -15,14 +14,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -33,8 +28,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(
-        locations = "classpath:application-integrationtest.properties")
 public class EndpointTests {
 
     @Autowired
