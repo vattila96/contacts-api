@@ -1,9 +1,13 @@
 package hu.futureofmedia.task.contactsapi;
 
+import hu.futureofmedia.task.contactsapi.common.ResourceCreationException;
 import hu.futureofmedia.task.contactsapi.common.Status;
+import hu.futureofmedia.task.contactsapi.dtos.ContactPersonRequest;
 import hu.futureofmedia.task.contactsapi.entities.ContactPerson;
+import hu.futureofmedia.task.contactsapi.mappers.ContactPersonMapper;
 import hu.futureofmedia.task.contactsapi.repositories.ContactPersonRepository;
 import hu.futureofmedia.task.contactsapi.services.ContactPersonService;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +36,7 @@ class ServiceTests {
     ContactPerson person1, person2, person3;
 
     @BeforeEach
-    public void createContactPersons() {
+    public void setUp() {
         person1 = new ContactPerson();
         person1.setId(321L);
         person1.setLastName("Bela");
@@ -68,5 +72,11 @@ class ServiceTests {
         when(contactPersonRepository.findById(540L)).thenReturn(java.util.Optional.ofNullable(person3));
         contactPersonService.deleteContactPerson(540L);
         Assertions.assertEquals(Status.DELETED, person3.getStatus());
+    }
+
+    @Test
+    public void createContactPerson() {
+        ContactPersonRequest contactPersonRequest = new ContactPersonRequest();
+        Assert.assertThrows(ResourceCreationException.class, () -> contactPersonService.createContactPerson(contactPersonRequest));
     }
 }
